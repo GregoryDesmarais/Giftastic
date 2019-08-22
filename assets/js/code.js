@@ -57,9 +57,16 @@ $(document).on("click", ".gif", function() {
 displayButtons();
 
 $("#addButton").click(function(event) {
+
     event.preventDefault();
+
     var newTopic = $("#searchInput").val().trim();
-    topics.push(newTopic);
-    $("#searchInput").val("");
-    displayButtons();
+    if (newTopic.length > 0) {
+        topics.push(newTopic);
+        $("#searchInput").val("");
+        displayButtons();
+    } else {
+        alert("Please enter a topic!");
+        $("#searchInput").val("");
+    }
 })
