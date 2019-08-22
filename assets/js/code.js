@@ -2,6 +2,9 @@ var topics = ['kitten', 'puppy', 'bird', 'otter'];
 
 function displayButtons() {
     $("#searchButtons").empty();
+    if (localStorage.topics.length) {
+        topics = JSON.parse(localStorage.topics);
+    }
     for (x in topics) {
         var newButton = $("<button>");
         newButton.addClass("topic")
@@ -63,6 +66,7 @@ $("#addButton").click(function(event) {
     var newTopic = $("#searchInput").val().trim();
     if (newTopic.length > 0) {
         topics.push(newTopic);
+        localStorage.topics = JSON.stringify(topics);
         $("#searchInput").val("");
         displayButtons();
     } else {
