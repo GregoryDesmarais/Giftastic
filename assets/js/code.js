@@ -24,7 +24,8 @@ $(document).on("click", ".topic", function() {
         var animate = "";
         for (x in data) {
             var newDiv = $("<div>");
-            newDiv.addClass("left");
+            newDiv.addClass("left")
+                .html("<br>");
             var newImg = $("<img>");
             newImg.attr("data-static", data[x].images.fixed_height_still.url)
                 .attr("data-animate", data[x].images.fixed_height.url)
@@ -32,7 +33,7 @@ $(document).on("click", ".topic", function() {
                 .attr("src", data[x].images.fixed_height_still.url)
                 .addClass("gif")
                 .appendTo(newDiv);
-            newDiv.append("Rating: " + data[x].rating)
+            newDiv.append("<br>Rating: " + data[x].rating.toUpperCase())
                 .prependTo($("#gifDisplay"));
         }
     })
@@ -53,9 +54,12 @@ $(document).on("click", ".gif", function() {
     }
 });
 
+displayButtons();
 
-$(function() {
-
+$("#addButton").click(function(event) {
+    event.preventDefault();
+    var newTopic = $("#searchInput").val().trim();
+    topics.push(newTopic);
+    $("#searchInput").val("");
     displayButtons();
-
 })
