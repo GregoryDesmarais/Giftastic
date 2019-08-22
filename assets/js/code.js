@@ -27,8 +27,6 @@ $(document).on("click", ".topic", function() {
             alert("Sorry, no images found.  Removing button");
             $('.topic[data-info = "' + search + '"').remove();
         }
-        var static = "";
-        var animate = "";
         for (x in data) {
             var newDiv = $("<div>");
             newDiv.addClass("left")
