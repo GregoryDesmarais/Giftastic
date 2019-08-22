@@ -2,7 +2,7 @@ var topics = ['kitten', 'puppy', 'bird', 'otter'];
 
 function displayButtons() {
     $("#searchButtons").empty();
-    if (localStorage.topics.length) {
+    if (localStorage.topics) {
         topics = JSON.parse(localStorage.topics);
     }
     for (x in topics) {
