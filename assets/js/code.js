@@ -23,6 +23,10 @@ $(document).on("click", ".topic", function() {
         method: "GET"
     }).then(function(response) {
         var data = response.data;
+        if (data.length <= 0) {
+            alert("Sorry, no images found.  Removing button");
+            $('.topic[data-info = "' + search + '"').remove();
+        }
         var static = "";
         var animate = "";
         for (x in data) {
