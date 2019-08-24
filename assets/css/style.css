@@ -19,3 +19,16 @@ button {
     clear: both;
     display: table;
 }
+
+form {
+    float: left;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18pt;
+    font-weight: bold;
+    color: white;
+}
+
+body {
+    background-color: rgba(68, 68, 68, 0.918);
+}
