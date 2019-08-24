@@ -9,6 +9,7 @@ function displayButtons() {
         var newButton = $("<button>");
         newButton.addClass("topic")
             .attr("data-info", topics[x])
+            .attr("data-offset", 0)
             .text(topics[x]);
         $("#searchButtons").append(newButton);
 
@@ -17,7 +18,9 @@ function displayButtons() {
 
 $(document).on("click", ".topic", function() {
     var search = $(this).attr("data-info");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=XQiqB5T5zXzeN0k6dUAvPr4MV7P2U2hE&q=" + search + "&limit=10";
+    var offset = parseInt($(this).attr("data-offset"));
+    var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=XQiqB5T5zXzeN0k6dUAvPr4MV7P2U2hE&q=" + search + "&limit=10&offset=" + offset;
+    offset += 10;
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -42,14 +45,13 @@ $(document).on("click", ".topic", function() {
                 .prependTo($("#gifDisplay"));
         }
     })
+    $(this).attr("data-offset", offset);
 });
 
 $(document).on("click", ".gif", function() {
     var state = $(this).attr("data-state");
     var static = $(this).attr("data-static");
     var animate = $(this).attr("data-animate");
-    console.log(state, static, animate);
-
     if (state === "static") {
         $(this).attr("data-state", "animate");
         $(this).attr("src", animate);
