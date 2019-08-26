@@ -1,10 +1,14 @@
 var topics = ['kitten', 'puppy', 'bird', 'otter'];
 
-function displayButtons() {
-    $("#searchButtons").empty();
+function checkLocal() {
     if (localStorage.topics) {
         topics = JSON.parse(localStorage.topics);
     }
+}
+
+function displayButtons() {
+    $("#searchButtons").empty();
+    checkLocal();
     for (x in topics) {
         var newButton = $("<button>");
         newButton.addClass("topic")
@@ -16,7 +20,15 @@ function displayButtons() {
     }
 }
 
-$(document).on("click", ".topic", function() {
+$(document).on("click", ".topic", function(e) {
+    if (e.ctrlKey) {
+        checkLocal();
+        var remove = $(this).text();
+        topics.splice(topics.indexOf(remove), 1);
+        localStorage.topics = JSON.stringify(topics);
+        displayButtons();
+        return false;
+    }
     var search = $(this).attr("data-info");
     var offset = parseInt($(this).attr("data-offset"));
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=XQiqB5T5zXzeN0k6dUAvPr4MV7P2U2hE&q=" + search + "&limit=10&offset=" + offset;
