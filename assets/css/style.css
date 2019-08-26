@@ -1,10 +1,5 @@
-.left {
-    float: left;
-    text-align: center;
-    padding: 1% 5%;
-}
-
-button {
+button,
+input[type='submit'] {
     margin: 1%;
     padding: .5%;
     background-color: black;
@@ -14,21 +9,10 @@ button {
     font-weight: bold;
 }
 
-#searchButtons::after {
-    content: "";
-    clear: both;
-    display: table;
+input {
+    margin: 2%;
 }
 
-form {
-    float: left;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18pt;
-    font-weight: bold;
-    color: white;
-}
-
-body {
-    background-color: rgba(68, 68, 68, 0.918);
+img {
+    max-width: 300px;
 }

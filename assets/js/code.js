@@ -43,17 +43,21 @@ $(document).on("click", ".topic", function(e) {
             $('.topic[data-info = "' + search + '"').remove();
         }
         for (x in data) {
-            var newDiv = $("<div>");
-            newDiv.addClass("left")
-                .html("<br>");
+            if (x % 3 === 0) {
+                var newRow = $("<div>");
+                newRow.addClass("row");
+            }
+            var newCol = $("<div>");
+            newCol.addClass("col-sm-4 text-center my-2");
             var newImg = $("<img>");
             newImg.attr("data-static", data[x].images.fixed_height_still.url)
                 .attr("data-animate", data[x].images.fixed_height.url)
                 .attr("data-state", "static")
                 .attr("src", data[x].images.fixed_height_still.url)
                 .addClass("gif")
-                .appendTo(newDiv);
-            newDiv.append("<br>Rating: " + data[x].rating.toUpperCase())
+                .appendTo(newCol);
+            newCol.append("<br>Rating: " + data[x].rating.toUpperCase());
+            newRow.append(newCol)
                 .prependTo($("#gifDisplay"));
         }
     })

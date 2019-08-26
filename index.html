@@ -6,24 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Gif-tastic!</title>
 </head>
 
-<body>
-    <form id='search-form'>
-        <label for='searchInput'>Add a search topic!</label><br>
-        <input type="text" id='searchInput'><br>
-        <input type='submit' id='addButton' value="Add!">
-        <br>Click to start/stop animation!
-    </form>
-    <div id='searchButtons'>
-
+<body class="bg-dark text-white">
+    <div class="jumbotron bg-dark text-white text-center">
+        <h1>
+            Gif-tastic!
+        </h1>
+        <p>
+            Click a topic button to show 10 images for that topic.<br> Each additonal click will show 10 additional images!<br> Click the image to start and stop animation.<br>Ctrl-Click a topic to remove it.</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-form bg-secondary text-white text-left ">
+                        <div class="card-header">
+                            Add a search topic!
+                        </div>
+                        <div class="card-body">
+                            <form id='search-form'>
+                                <input type="text" id='searchInput'><br>
+                                <input type='submit' id='addButton' value="Add!">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-topics bg-secondary text-white">
+                        <div class="card-header text-left">
+                            <span>Topics</span>
+                        </div>
+                        <div class="card-body">
+                            <div id='searchButtons'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div id='gifDisplay'>
-
-
+    <div class="card bg-secondary text-white text-left">
+        <div class="card-header">Gifs</div>
+    </div>
+    <div class="container bg-dark text-white" id='gifDisplay'>
     </div>
     <script src="assets/js/code.js"></script>
 </body>
